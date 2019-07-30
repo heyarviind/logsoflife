@@ -6,6 +6,7 @@ exports.addLog = (req, res) => {
   let log = new Log
 
   log.logText = req.body.logText
+  log.isTodo = req.body.isTodo
   log.uid = req.userId
   log.save((err, log) => {
     if (err) throw new Error(err)
@@ -19,7 +20,9 @@ exports.addLog = (req, res) => {
 exports.getLogs = (req, res) => {
   Log.find({
     uid: req.userId
-  }, (err, logs) => {
+  })
+  .sort('-created')
+  .exec((err, logs) => {
     if (err) throw new Error(err)
 
     res

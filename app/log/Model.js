@@ -21,15 +21,19 @@ const logsSchema = new mongoose.Schema({
   },
   created: {
     type: Date,
-    default: Date.now()
+    default: Date.now
+  },
+  isTodo: {
+    type: Boolean,
+    default: false
   },
   isStarred: {
-    type: Number,
-    default: 0
+    type: Boolean,
+    default: false
   },
   isDeleted: {
-    type: Number,
-    default: 0
+    type: Boolean,
+    default: false
   }
 });
 

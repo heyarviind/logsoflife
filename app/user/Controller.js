@@ -65,9 +65,11 @@ exports.login = (req, res) => {
           token: token
         })
     } else {
-      res.status().json({
-        message: "Wrong email or password"
-      })
+      res
+        .status(401)
+        .json({
+          message: "Wrong email or password"
+        })
     }
   })
 }
