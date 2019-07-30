@@ -27,6 +27,27 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// CORS
+app.use(async function(req, res, next) {
+
+  var allowedOrigins = [
+  	'http://localhost:8080',
+  	'http://127.0.0.1:8080',
+    'http://127.0.0.1:3000',
+    'http://192.168.1.3:8080',
+    'https://logsoflife.netlify.com'
+  ];
+
+  var origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+       res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/', logRouter);
 app.use('/', userRouter);
