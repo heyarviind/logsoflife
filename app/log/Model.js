@@ -23,9 +23,15 @@ const logsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  isTodo: {
-    type: Boolean,
-    default: false
+  todo: {
+    isTodo: {
+      type: Boolean,
+      default: false
+    },
+    isCompleted: {
+      type: Boolean,
+      default: false
+    }
   },
   isStarred: {
     type: Boolean,
