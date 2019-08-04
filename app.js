@@ -35,6 +35,7 @@ app.use(async function(req, res, next) {
   	'http://127.0.0.1:8080',
     'http://127.0.0.1:3000',
     'http://192.168.1.3:8080',
+    'https://logsof.life',
     'https://logsoflife.netlify.com'
   ];
 
